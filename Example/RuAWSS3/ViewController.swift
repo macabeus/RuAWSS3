@@ -21,7 +21,7 @@ class ViewController: UIViewController {
     
     @IBAction func btnUploadImage(_ sender: Any) {
         txtViewLogs.appendLine(text: "------------------------------")
-        txtViewLogs.appendLine(text: "Iniciando upload da imagem...")
+        txtViewLogs.appendLine(text: "Starting image upload...")
         
         firstly {
             AmazonS3.shared.uploadImage(
@@ -39,7 +39,7 @@ class ViewController: UIViewController {
     
     @IBAction func btnDownloadImage(_ sender: Any) {
         txtViewLogs.appendLine(text: "------------------------------")
-        txtViewLogs.appendLine(text: "Iniciando download...")
+        txtViewLogs.appendLine(text: "Starting image download...")
         
         firstly {
             AmazonS3.shared.download(
@@ -49,7 +49,7 @@ class ViewController: UIViewController {
         }.then { filePath -> Void in
             self.imgView.image = UIImage(contentsOfFile: filePath)!
             self.txtViewLogs.appendLine(text: "... success! 😄")
-            self.txtViewLogs.appendLine(text: "Imagem baixada no diretório \(filePath)")
+            self.txtViewLogs.appendLine(text: "Image downloaded in directory \(filePath)")
         }.catch { error in
             self.txtViewLogs.appendLine(text: "... error 😧")
             self.txtViewLogs.appendLine(text: (error as NSError).localizedDescription)
@@ -58,7 +58,7 @@ class ViewController: UIViewController {
     
     @IBAction func btnDeleteImage(_ sender: Any) {
         txtViewLogs.appendLine(text: "------------------------------")
-        txtViewLogs.appendLine(text: "Deletando imagem...")
+        txtViewLogs.appendLine(text: "Deleting image...")
         
         firstly {
             AmazonS3.shared.delete(
@@ -75,7 +75,7 @@ class ViewController: UIViewController {
     
     @IBAction func btnUploadText(_ sender: Any) {
         txtViewLogs.appendLine(text: "------------------------------")
-        txtViewLogs.appendLine(text: "Iniciando upload do arquivo de texto...")
+        txtViewLogs.appendLine(text: "Starting upload text file...")
         
         let textFilePath = createExampleTextFile()
         
@@ -95,7 +95,7 @@ class ViewController: UIViewController {
     
     @IBAction func btnDownloadText(_ sender: Any) {
         txtViewLogs.appendLine(text: "------------------------------")
-        txtViewLogs.appendLine(text: "Iniciando download do arquivo de texto...")
+        txtViewLogs.appendLine(text: "Starting download of the text file...")
 
         firstly {
             AmazonS3.shared.download(
@@ -108,7 +108,7 @@ class ViewController: UIViewController {
                 let text = try String(contentsOfFile: filePath)
                 self.txtViewLogs.appendLine(text: "Text on file: '\(text)'")
             } catch {
-                print("Falha ao tentar ler o arquivo de texto baixado... 😕, Error: " + error.localizedDescription)
+                print("Failed to read downloaded text file... 😕, Error: " + error.localizedDescription)
             }
         }.catch { error in
             self.txtViewLogs.appendLine(text: "... error 😧")
@@ -118,7 +118,7 @@ class ViewController: UIViewController {
     
     @IBAction func btnDeleteText(_ sender: Any) {
         txtViewLogs.appendLine(text: "------------------------------")
-        txtViewLogs.appendLine(text: "Deletando texto...")
+        txtViewLogs.appendLine(text: "Deleting text file...")
         
         firstly {
             AmazonS3.shared.delete(
