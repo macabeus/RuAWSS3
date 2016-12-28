@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'RuAWSS3'
-  s.version          = '0.1.0'
+  s.version          = '0.1.0-beta'
   s.summary          = 'Ridiculously Uncomplicated AWS S3'
 
 # This description is used to generate tags and improve search results.
