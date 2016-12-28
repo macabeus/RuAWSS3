@@ -3,44 +3,67 @@
 import Quick
 import Nimble
 import RuAWSS3
+import PromiseKit
 
 class TableOfContentsSpec: QuickSpec {
     override func spec() {
         describe("these will fail") {
-
-            it("can do maths") {
-                expect(1) == 2
+            beforeEach {
+                // IMPORTANT: Set your AWS S3 credentials
+                /*AmazonS3.shared.performCredentials(
+                    regionType: ** YOUR REGION **,
+                    identityPoolId: ** YOUR POOL ID **
+                )*/
             }
 
-            it("can read") {
-                expect("number") == "string"
-            }
-
-            it("will eventually fail") {
-                expect("time").toEventually( equal("done") )
+            it("upload image") {
+                let testBundle = Bundle(for: type(of: self))
+                let filePath = testBundle.path(forResource: "example", ofType: "jpg")!
+                let image = UIImage(contentsOfFile: filePath)!
+                
+                waitUntil(timeout: 10) { done in
+                    firstly {
+                        AmazonS3.shared.uploadImage(
+                            bucket: "eventbeeapp",
+                            key: "image.jpg",
+                            image: image
+                        )
+                    }.then {
+                        done()
+                    }.catch { error in
+                        fail("Error when try upload the image: \((error as NSError).localizedDescription)")
+                        done()
+                    }
+                }
             }
             
-            context("these will pass") {
-
-                it("can do maths") {
-                    expect(23) == 23
-                }
-
-                it("can read") {
-                    expect("🐮") == "🐮"
-                }
-
-                it("will eventually pass") {
-                    var time = "passing"
-
-                    DispatchQueue.main.async {
-                        time = "done"
+            it("download image") {
+                waitUntil(timeout: 10) { done in
+                    firstly {
+                        AmazonS3.shared.download(
+                            bucket: "eventbeeapp",
+                            key: "image.jpg"
+                        )
+                    }.then { filePath -> Void in
+                        done()
+                    }.catch { error in
+                        fail("Error when try download the image: \((error as NSError).localizedDescription)")
+                        done()
                     }
-
-                    waitUntil { done in
-                        Thread.sleep(forTimeInterval: 0.5)
-                        expect(time) == "done"
-
+                }
+            }
+            
+            it("delete image") {
+                waitUntil(timeout: 10) { done in
+                    firstly {
+                        AmazonS3.shared.delete(
+                            bucket: "eventbeeapp",
+                            key: "image.jpg"
+                        )
+                    }.then {
+                        done()
+                    }.catch { error in
+                        fail("Error when try delete the image: \((error as NSError).localizedDescription)")
                         done()
                     }
                 }

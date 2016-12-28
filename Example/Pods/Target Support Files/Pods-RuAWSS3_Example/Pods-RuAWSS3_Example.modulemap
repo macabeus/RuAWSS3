@@ -1,0 +1,6 @@
+framework module Pods_RuAWSS3_Example {
+  umbrella header "Pods-RuAWSS3_Example-umbrella.h"
+
+  export *
+  module * { export * }
+}

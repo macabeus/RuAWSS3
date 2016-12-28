@@ -1,0 +1,42 @@
+PODS:
+  - AWSCore (2.4.16)
+  - AWSS3 (2.4.16):
+    - AWSCore (= 2.4.16)
+  - Nimble (5.1.1)
+  - PromiseKit (4.1.0):
+    - PromiseKit/Foundation (= 4.1.0)
+    - PromiseKit/QuartzCore (= 4.1.0)
+    - PromiseKit/UIKit (= 4.1.0)
+  - PromiseKit/CorePromise (4.1.0)
+  - PromiseKit/Foundation (4.1.0):
+    - PromiseKit/CorePromise
+  - PromiseKit/QuartzCore (4.1.0):
+    - PromiseKit/CorePromise
+  - PromiseKit/UIKit (4.1.0):
+    - PromiseKit/CorePromise
+  - Quick (1.0.0)
+  - RuAWSS3 (0.1.0):
+    - AWSS3 (~> 2.4.16)
+    - PromiseKit (~> 4.0)
+
+DEPENDENCIES:
+  - Nimble (~> 5.1.1)
+  - PromiseKit (~> 4.0)
+  - Quick (~> 1.0.0)
+  - RuAWSS3 (from `../`)
+
+EXTERNAL SOURCES:
+  RuAWSS3:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  AWSCore: 7c3c129991e6387bcbad7132bc3661e7135754db
+  AWSS3: fef6aa8f8f625df8f67f1b6574fe761f3a4ddc99
+  Nimble: 415e3aa3267e7bc2c96b05fa814ddea7bb686a29
+  PromiseKit: c98453ff78544c0ad5bb0ea980782e6875f47978
+  Quick: 8024e4a47e6cc03a9d5245ef0948264fc6d27cff
+  RuAWSS3: b76ac85ffaa39f850b0e8d5cb4f6616c1fbb35c1
+
+PODFILE CHECKSUM: 92a3e4c27f1efe88fdcadfb8354f763012cbda1b
+
+COCOAPODS: 1.2.0.beta.1

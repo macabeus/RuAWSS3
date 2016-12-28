@@ -6,7 +6,9 @@ target 'RuAWSS3_Example' do
   target 'RuAWSS3_Tests' do
     inherit! :search_paths
 
+    pod 'RuAWSS3', :path => '../'
+    pod 'PromiseKit', '~> 4.0'
     pod 'Quick', '~> 1.0.0'
-  pod 'Nimble', '~> 5.1.1'
+    pod 'Nimble', '~> 5.1.1'
   end
 end

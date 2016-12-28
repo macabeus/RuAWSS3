@@ -1,0 +1,30 @@
+{
+  "name": "RuAWSS3",
+  "version": "0.1.0",
+  "summary": "A short description of RuAWSS3.",
+  "description": "TODO: Add long description of the pod here.",
+  "homepage": "https://github.com/<GITHUB_USERNAME>/RuAWSS3",
+  "license": {
+    "type": "MIT",
+    "file": "LICENSE"
+  },
+  "authors": {
+    "Macabeus": "bruno.macabeus@gmail.com"
+  },
+  "source": {
+    "git": "https://github.com/<GITHUB_USERNAME>/RuAWSS3.git",
+    "tag": "0.1.0"
+  },
+  "platforms": {
+    "ios": "8.0"
+  },
+  "source_files": "RuAWSS3/Classes/**/*",
+  "dependencies": {
+    "AWSS3": [
+      "~> 2.4.16"
+    ],
+    "PromiseKit": [
+      "~> 4.0"
+    ]
+  }
+}

@@ -1,0 +1,6 @@
+framework module RuAWSS3 {
+  umbrella header "RuAWSS3-umbrella.h"
+
+  export *
+  module * { export * }
+}
