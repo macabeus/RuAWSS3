@@ -55,7 +55,7 @@ public class AmazonS3 {
     
     fileprivate func checkDownloadCache(bucket: String, key: String) -> Promise<String> {
         let keyFullPath = key.components(separatedBy: "/")
-        var keyDirectories = keyFullPath[0..<keyFullPath.count-1]
+        let keyDirectories = keyFullPath[0..<keyFullPath.count-1]
         var url = deviceDirectoryForDownloads
         keyDirectories.forEach { path in
             url.appendPathComponent(path)
@@ -86,7 +86,7 @@ public class AmazonS3 {
                     task -> Any? in
                     
                     if let result = task.result,
-                        ((result as? AWSS3HeadObjectOutput) != nil) {
+                        ((result as AWSS3HeadObjectOutput) != nil) {
                         let servDate = result.lastModified!
                         if modDate < servDate {
                             // obsolete cache file; cache miss
